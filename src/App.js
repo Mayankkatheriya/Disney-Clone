@@ -1,21 +1,26 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './Components/Login';
 import Header from './Components/Header';
+import Home from './Components/Home';
 
 function App() {
-
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      exact: true,
-      element: <Login />
-    }
-  ])
-
   return (
     <div className="App">
-      <Header />
-      <RouterProvider router = {router} />
+      {/* Set up the main router using BrowserRouter */}
+      <Router>
+        {/* Include the Header component to be displayed on all routes */}
+        <Header />
+        
+        {/* Define routes using the Routes component */}
+        <Routes>
+          {/* Route for the Login component, accessible at the root path */}
+          <Route path="/" element={<Login />} />
+
+          {/* Route for the Home component, accessible at the "/home" path */}
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
