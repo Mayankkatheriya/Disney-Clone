@@ -72,26 +72,26 @@ const Header = () => {
           <span>HOME</span>
         </Link>
         {/* other navigation items */}
-        <a>
+        <Link to = "#">
           <img src="/images/search-icon.svg" alt="SEARCH" />
           <span>SEARCH</span>
-        </a>
-        <a>
+        </Link>
+        <Link to = "#">
           <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
           <span>WATCHLIST</span>
-        </a>
-        <a>
+        </Link>
+        <Link to = "#">
           <img src="/images/original-icon.svg" alt="ORIGINALS" />
           <span>ORIGINALS</span>
-        </a>
-        <a>
+        </Link>
+        <Link to = "#">
           <img src="/images/movie-icon.svg" alt="MOVIES" />
           <span>MOVIES</span>
-        </a>
-        <a>
+        </Link>
+        <Link to = "#">
           <img src="/images/series-icon.svg" alt="SERIES" />
           <span>SERIES</span>
-        </a>
+        </Link>
       </NavMenu>
 
       {!userName ? (
@@ -125,6 +125,10 @@ const Nav = styled.nav`
   padding: 0 36px;
   letter-spacing: 16px;
   z-index: 3;
+
+  @media (max-width: 830px) {
+    padding: 0 16px;
+  }
 `;
 
 const Logo = styled.a`
@@ -138,6 +142,12 @@ const Logo = styled.a`
   img {
     display: block;
     width: 100%;
+  }
+
+  @media (max-width: 830px) {
+    img {
+      width: 80px;
+    }
   }
 `;
 
@@ -199,9 +209,9 @@ const NavMenu = styled.div`
         opacity: 1 !important;
       }
     }
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
+    @media (max-width: 830px) {
+    display: none;
+  }
   }
 `;
 
@@ -223,6 +233,10 @@ const Login = styled.a`
 
 const UserImg = styled.img`
   height: 100%;
+
+  @media (max-width: 830px) {
+    height: 40px;
+  }
 `;
 
 const DropDown = styled.div`

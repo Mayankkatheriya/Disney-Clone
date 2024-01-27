@@ -57,6 +57,9 @@ const Home = () => {
           case "trending":
             trending = [...trending, { id: doc.id, ...doc.data() }];
             break;
+          
+          default: 
+            return null;
         }
       });
 
