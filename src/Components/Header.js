@@ -23,7 +23,7 @@ const Header = () => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUser(user);
-        navigate("/home")
+        navigate("/home");
       }
     });
   }, [userName]);
@@ -33,17 +33,17 @@ const Header = () => {
     if (!userName) {
       try {
         const result = await signInWithPopup(auth, provider);
-        setUser(result.user)
+        setUser(result.user);
       } catch (error) {
         console.error(error.message);
       }
     } else if (userName) {
       try {
-        await signOut(auth)
+        await signOut(auth);
         dispatch(setSignOutState());
-        navigate('/')
+        navigate("/");
       } catch (error) {
-        console.log("Error signing out: ", error.message)
+        console.log("Error signing out: ", error.message);
       }
     }
   };
@@ -54,10 +54,10 @@ const Header = () => {
       setUserLoginDetails({
         name: user.displayName,
         email: user.email,
-        photo: user.photoURL
+        photo: user.photoURL,
       })
-    )
-  }
+    );
+  };
 
   return (
     <Nav>
@@ -65,39 +65,39 @@ const Header = () => {
         <img src="/images/logo.svg" alt="Disney+" />
       </Logo>
 
+      {/* Navigation Menu */}
+      <NavMenu>
+        <Link to="/home">
+          <img src="/images/home-icon.svg" alt="HOME" />
+          <span>HOME</span>
+        </Link>
+        {/* other navigation items */}
+        <a>
+          <img src="/images/search-icon.svg" alt="SEARCH" />
+          <span>SEARCH</span>
+        </a>
+        <a>
+          <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
+          <span>WATCHLIST</span>
+        </a>
+        <a>
+          <img src="/images/original-icon.svg" alt="ORIGINALS" />
+          <span>ORIGINALS</span>
+        </a>
+        <a>
+          <img src="/images/movie-icon.svg" alt="MOVIES" />
+          <span>MOVIES</span>
+        </a>
+        <a>
+          <img src="/images/series-icon.svg" alt="SERIES" />
+          <span>SERIES</span>
+        </a>
+      </NavMenu>
+
       {!userName ? (
         <Login onClick={handleAuth}>Login</Login>
       ) : (
         <>
-          {/* Navigation Menu */}
-          <NavMenu>
-            <Link to="/home">
-              <img src="/images/home-icon.svg" alt="HOME" />
-              <span>HOME</span>
-            </Link>
-            {/* other navigation items */}
-            <a>
-              <img src="/images/search-icon.svg" alt="SEARCH" />
-              <span>SEARCH</span>
-            </a>
-            <a>
-              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
-              <span>WATCHLIST</span>
-            </a>
-            <a>
-              <img src="/images/original-icon.svg" alt="ORIGINALS" />
-              <span>ORIGINALS</span>
-            </a>
-            <a>
-              <img src="/images/movie-icon.svg" alt="MOVIES" />
-              <span>MOVIES</span>
-            </a>
-            <a>
-              <img src="/images/series-icon.svg" alt="SERIES" />
-              <span>SERIES</span>
-            </a>
-          </NavMenu>
-
           {/* User Profile and Sign Out */}
           <SignOut>
             <UserImg src={userPhoto} alt={userName} />
@@ -198,6 +198,9 @@ const NavMenu = styled.div`
         visibility: visible;
         opacity: 1 !important;
       }
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
     }
   }
 `;

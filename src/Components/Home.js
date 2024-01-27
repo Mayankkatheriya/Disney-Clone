@@ -6,6 +6,8 @@ import Recommends from "./Recommends";
 import NewDisney from "./NewDisney";
 import Originals from "./Originals";
 import Trending from "./Trending";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { db } from "../firebase";
 import { collection, onSnapshot } from "firebase/firestore";
@@ -20,18 +22,24 @@ const Home = () => {
   let originals = [];
   let trending = [];
 
+  if (!userName) {
+    toast.info("Please Login To See More Categories", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
+
   useEffect(() => {
     const moviesCollectionRef = collection(db, "movies");
     onSnapshot(moviesCollectionRef, (snapshot) => {
       snapshot.docs.forEach((doc) => {
         const movieData = { ...doc.data() };
-        // console.log(console.log(movieData, recommends));
-
-        //You can use this also
-        // db.collection("movies").onSnapshot((snapshot) => {
-        //   snapshot.docs.map((doc) => {
-        //     console.log(recommends);
-        //     switch (doc.data().type) {
 
         switch (movieData.type) {
           case "recommend":
@@ -61,22 +69,24 @@ const Home = () => {
         })
       );
     });
-
-    // return () => {
-    //   // Unsubscribe from the snapshot listener when component unmounts
-    //   unsubscribe();
-    // };
   }, [userName]);
 
   return (
-    <Container>
-      <ImgSlider />
-      <Viewers />
-      <Recommends />
-      <NewDisney />
-      <Originals />
-      <Trending />
-    </Container>
+    <>
+      <Container>
+        <ImgSlider />
+        <Viewers />
+        {userName && (
+          <>
+            <Recommends />
+            <NewDisney />
+            <Originals />
+            <Trending />
+          </>
+        )}
+      </Container>
+      <ToastContainer />
+    </>
   );
 };
 

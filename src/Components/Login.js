@@ -1,15 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 // Login component with styled elements
 const Login = () => {
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate("/home");
+  };
   return (
     <Container>
       <Content>
         {/* Call to Action */}
         <CTA>
           <CTALogoOne src="/images/cta-logo-one.svg" alt="" />
-          <SignUp>GET ALL THERE</SignUp>
+          <SignUp onClick={goToHome}>GET ALL THERE</SignUp>
           {/* Description */}
           <Description>
             Get Premier Access to Raya and the Last Dragon for an additional fee
