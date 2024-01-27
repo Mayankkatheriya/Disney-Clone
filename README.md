@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# Disney+ Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a Disney+ clone that replicates the Disney+ streaming service, showcasing movies and TV shows from Disney, Pixar, Marvel, Star Wars, and National Geographic. It is built using React for the frontend, Firebase for authentication and database, and styled-components for styling.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Dependencies](#dependencies)
+- [Screenshots](#screenshots)
+- [Hosted Link](#hosted-link)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- User authentication using Firebase authentication.
+- Dynamic rendering of movie data from Firebase Firestore.
+- Responsive design for various screen sizes.
+- Sliders and viewers for an engaging user interface.
+- Movie details page with play and trailer options.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository:**
 
-### `npm run build`
+    ```bash
+    git clone https://github.com/Mayankkatheriya/Disney-Clone.git
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```bash
+    cd Disney-Clone
+    npm install
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Set up Firebase:**
+    - Create a new project on [Firebase Console](https://console.firebase.google.com/).
+    - Obtain your Firebase configuration (apiKey, authDomain, projectId, etc.).
+    - Replace the placeholders in `src/firebase.js` with your Firebase configuration.
 
-### `npm run eject`
+4. **Run the application:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```bash
+    npm start
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. **Open in your browser:**
+    - Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `public/`: Static assets and HTML template.
+- `src/`: React application source code.
+  - `components/`: Reusable React components.
+  - `features/`: Redux slices for managing global state.
+  - `firebase.js`: Firebase configuration and initialization.
+  - `App.js`: Main application component.
+  - `index.js`: Entry point for React application.
 
-## Learn More
+## Dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React
+- React Router
+- Redux Toolkit
+- Firebase
+- Styled Components
+- React Slick
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+For a complete list of dependencies, check the `package.json` file.
 
-### Code Splitting
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`Landing Page`
+![image](https://github.com/Mayankkatheriya/Disney-Clone/assets/128832286/8d6be903-b8bb-49a4-85f4-ae728cdb916f)
 
-### Analyzing the Bundle Size
+`Home Page`
+![image](https://github.com/Mayankkatheriya/Disney-Clone/assets/128832286/b01554ef-340f-46e8-96b4-03cb800a013e)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Hosted Link
 
-### Making a Progressive Web App
+Check out the hosted version of the app [here](https://disney-clone-psi-henna.vercel.app/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+No license yet
