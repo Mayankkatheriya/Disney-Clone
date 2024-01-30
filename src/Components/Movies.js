@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useSelector, useDispatch } from "react-redux"
+import { setmoviesApiData } from '../features/apiData/apiDataSlice';
 
 const Movies = () => {
-
-    
+    const moviesList = useSelector(setmoviesApiData);
+    console.log(moviesList);
   return (
     <Container>
       

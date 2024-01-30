@@ -9,7 +9,7 @@ import {
   setSignOutState,
   setUserLoginDetails,
 } from "../features/user/userSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 // Header component with navigation and user authentication
 const Header = () => {
@@ -74,10 +74,14 @@ const Header = () => {
       ) : (
         <>
           <NavMenu>
-            <Link to="/home">
-              <img src="/images/home-icon.svg" alt="HOME" />
-              <span>HOME</span>
-            </Link>
+            <NavLink to="/home">
+              {({ isActive }) => (
+                <>
+                  <img src="/images/home-icon.svg" alt="HOME" />
+                  <span className={isActive ? "tab-active" : ""}>HOME</span>
+                </>
+              )}
+            </NavLink>
             <a>
               <img src="/images/search-icon.svg" alt="SEARCH" />
               <span>SEARCH</span>
@@ -90,10 +94,14 @@ const Header = () => {
               <img src="/images/original-icon.svg" alt="ORIGINALS" />
               <span>ORIGINALS</span>
             </a>
-            <Link to={"/movies"}>
-              <img src="/images/movie-icon.svg" alt="MOVIES" />
-              <span>MOVIES</span>
-            </Link>
+            <NavLink to={"/movies"}>
+              {({ isActive }) => (
+                <>
+                  <img src="/images/movie-icon.svg" alt="MOVIES" />
+                  <span className={isActive ? "tab-active" : ""}>MOVIES</span>
+                </>
+              )}
+            </NavLink>
             <a>
               <img src="/images/series-icon.svg" alt="SERIES" />
               <span>SERIES</span>
@@ -199,6 +207,14 @@ const NavMenu = styled.div`
         transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
         visibility: hidden;
         width: auto;
+      }
+    }
+
+    .tab-active {
+      &::before {
+        transform: scaleX(1);
+        visibility: visible;
+        opacity: 1 !important;
       }
     }
 
