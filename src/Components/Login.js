@@ -9,6 +9,7 @@ const Login = () => {
   const goToHome = () => {
     navigate("/home");
   };
+
   return (
     <Container>
       <Content>

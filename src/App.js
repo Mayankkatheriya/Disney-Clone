@@ -4,8 +4,11 @@ import Login from './Components/Login';
 import Header from './Components/Header';
 import Home from './Components/Home';
 import Detail from './Components/Detail';
+import Movies from './Components/Movies';
+import ProtectedRoute from './Components/ProtectedRoute';
 
 function App() {
+
   return (
     <div className="App">
       {/* Set up the main router using BrowserRouter */}
@@ -23,6 +26,13 @@ function App() {
 
           {/* Route for the Home component, accessible at the "/detail:id" path */}
           <Route path="/detail/:id" element = {<Detail />} />
+
+          {/* Route for the Home component, accessible at the "/detail:id" path */}
+          <Route path="/movies" element = {
+            <ProtectedRoute>
+              <Movies />
+            </ProtectedRoute>
+          } />
         </Routes>
       </Router>
     </div>
