@@ -21,9 +21,9 @@ const moviesApiData = createSlice({
 
 export const { setmoviesApiData } = moviesApiData.actions
 
-export const selectnowPlaying = (state) => state.movie.nowPlaying;
-export const selectpopular = (state) => state.movie.popular;
-export const selecttopRated = (state) => state.movie.topRated;
-export const selectupcoming = (state) => state.movie.upcoming;
+export const selectnowPlaying = (state) => state.apiData.nowPlaying;
+export const selectpopular = (state) => state.apiData.popular;
+export const selecttopRated = (state) => state.apiData.topRated;
+export const selectupcoming = (state) => state.apiData.upcoming;
 
 export default moviesApiData.reducer
