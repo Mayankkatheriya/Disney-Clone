@@ -4,14 +4,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { setmoviesApiData } from "../features/apiData/apiMoviesDataSlice";
 import { fetchData } from "../fetchApi/fetchData";
 import NowPlaying from "./NowPlaying";
+import Popular from "./Popular";
+import TopRated from "./TopRated";
+import Upcoming from "./Upcoming";
+import { selecttopRated } from "../features/apiData/apiMoviesDataSlice";
 
 const Movies = () => {
   const moviesList = useSelector(setmoviesApiData);
   const dispatch = useDispatch();
-
+  const topRated = useSelector(selecttopRated)
   console.log(moviesList);
 
   useEffect(() => {
+
+    if(topRated!=null) {
+      return
+    }
+
     const commonParams = {
       language: "en-US",
       page: 1,
@@ -45,9 +54,12 @@ const Movies = () => {
   }, [dispatch]);
 
   return (
-  <Container>
-    <NowPlaying />
-  </Container>
+    <Container>
+      <NowPlaying />
+      <TopRated />
+      <Popular />
+      <Upcoming />
+    </Container>
   );
 };
 

@@ -2,14 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectnowPlaying } from "../features/apiData/apiMoviesDataSlice";
+import { selectpopular } from "../features/apiData/apiMoviesDataSlice";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-
-const NowPlaying = () => {
-  const movies = useSelector(selectnowPlaying);
+const Popular = () => {
+  const movies = useSelector(selectpopular);
   const settings = {
     dots: true,
     infinite: true,
@@ -21,13 +20,18 @@ const NowPlaying = () => {
 
   return (
     <Container>
-      <h4>Now Playing</h4>
+      <h4>Popular</h4>
       <Carousel {...settings}>
         {movies &&
           movies.map((movie) => (
             <Wrap key={movie.id}>
               <Link to={`/detail/` + movie.id}>
-                <img src={"https://image.tmdb.org/t/p/original" + movie.poster_path} alt={movie.title} />
+                <img
+                  src={
+                    "https://image.tmdb.org/t/p/original" + movie.poster_path
+                  }
+                  alt={movie.title}
+                />
               </Link>
             </Wrap>
           ))}
@@ -130,4 +134,4 @@ const Wrap = styled.div`
   }
 `;
 
-export default NowPlaying;
+export default Popular;
