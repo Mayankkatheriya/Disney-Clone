@@ -1,28 +1,54 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { setmoviesApiData } from "../features/apiData/apiDataSlice";
+import { setmoviesApiData } from "../features/apiData/apiMoviesDataSlice";
 import { fetchData } from "../fetchApi/fetchData";
+import NowPlaying from "./NowPlaying";
 
 const Movies = () => {
   const moviesList = useSelector(setmoviesApiData);
   const dispatch = useDispatch();
+
   console.log(moviesList);
+
   useEffect(() => {
     const commonParams = {
       language: "en-US",
       page: 1,
     };
 
-    //trending Movies
+    // Fetch all movies concurrently
+    Promise.all([
+      fetchData("movie/now_playing", commonParams),
+      fetchData("movie/popular", commonParams),
+      fetchData("movie/top_rated", commonParams),
+      fetchData("movie/upcoming", commonParams),
+    ])
+      .then(([nowPlayingData, popularData, topRatedData, upcomingData]) => {
+        // Extract results from each response
+        const nowPlaying = nowPlayingData.results;
+        const popular = popularData.results;
+        const topRated = topRatedData.results;
+        const upcoming = upcomingData.results;
 
-    fetchData("trending/movie/day", commonParams)
-      .then((data) => {
-        console.log(data);
+        // Dispatch the data to Redux
+        dispatch(
+          setmoviesApiData({
+            nowPlaying,
+            popular,
+            topRated,
+            upcoming,
+          })
+        );
       })
       .catch((err) => console.error(err));
-  });
-  return <Container></Container>;
+  }, [dispatch]);
+
+  return (
+  <Container>
+    <NowPlaying />
+  </Container>
+  );
 };
 
 const Container = styled.main`

@@ -11,9 +11,9 @@ const Trending = () => {
       <h4>Trending</h4>
       <Content>
         {movies &&
-          movies.map((movie, key) => (
-            <Wrap key={key}>
-              {movie.id}
+          movies.map((movie) => (
+            <Wrap key={movie.id}>
+              
               <Link to={`/detail/` + movie.id}>
                 <img src={movie.cardImg} alt={movie.title} />
               </Link>

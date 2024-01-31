@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 // Import the userReducer from the Slice files
 import userReducer from "../features/user/userSlice";
 import movieReducer from '../features/movie/movieSlice';
-import moviesApiDataReducer from '../features/apiData/apiDataSlice'
+import moviesApiDataReducer from '../features/apiData/apiMoviesDataSlice'
 
 // Configure the Redux store with the userReducer as part of the state
 export default configureStore({

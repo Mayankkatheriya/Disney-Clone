@@ -2,23 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectNewDisney } from "../features/movie/movieSlice";
+import { selectnowPlaying } from "../features/apiData/apiMoviesDataSlice";
 
-const NewDisney = () => {
-  const movies = useSelector(selectNewDisney);
+
+const NowPlaying = () => {
+  const movies = useSelector(selectnowPlaying);
+  console.log(movies);
 
   return (
     <Container>
-      <h4>New to Disney+</h4>
+      <h4>Now Playing</h4>
       <Content>
-        {movies &&
-          movies.map((movie) => (
+        {/* {movies &&
+          movies.map((movie, key) => (
             <Wrap key={movie.id}>
               <Link to={`/detail/` + movie.id}>
-                <img src={movie.cardImg} alt={movie.title} />
+                <img src={"https://image.tmdb.org/t/p/original" + movie.poster_path} alt={movie.title} />
               </Link>
             </Wrap>
-          ))}
+          ))} */}
       </Content>
     </Container>
   );
@@ -71,4 +73,4 @@ const Wrap = styled.div`
   }
 `;
 
-export default NewDisney;
+export default NowPlaying;

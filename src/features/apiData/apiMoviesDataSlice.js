@@ -7,7 +7,7 @@ const initialState = {
   upcoming: null,
 };
 const moviesApiData = createSlice({
-  name: "apiData",
+  name: "apiMoviesData",
   initialState,
   reducers: {
     setmoviesApiData: (state, action) => {
@@ -21,9 +21,9 @@ const moviesApiData = createSlice({
 
 export const { setmoviesApiData } = moviesApiData.actions
 
-export const selectnowPlaying = (state) => state.apiData.nowPlaying;
-export const selectpopular = (state) => state.apiData.popular;
-export const selecttopRated = (state) => state.apiData.topRated;
-export const selectupcoming = (state) => state.apiData.upcoming;
+export const selectnowPlaying = (state) => state.moviesApiData.nowPlaying;
+export const selectpopular = (state) => state.moviesApiData.popular;
+export const selecttopRated = (state) => state.moviesApiData.topRated;
+export const selectupcoming = (state) => state.moviesApiData.upcoming;
 
 export default moviesApiData.reducer
