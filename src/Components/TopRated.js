@@ -13,9 +13,32 @@ const TopRated = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     autoplay: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
   return (
@@ -46,7 +69,7 @@ const Container = styled.div`
 
 const Carousel = styled(Slider)`
   margin-top: 20px;
-  height: 250px;
+  height: 280px;
   /* overflow-y: hidden; */
 
   & > button {
@@ -85,19 +108,8 @@ const Carousel = styled(Slider)`
   }
 `;
 
-// const Content = styled.div`
-//   display: grid;
-//   grid-gap: 25px;
-//   gap: 25px;
-//   grid-template-columns: repeat(4, minmax(0, 1fr));
-
-//   @media (max-width: 768px) {
-//     grid-template-columns: repeat(2, minmax(0, 1fr));
-//   }
-// `;
-
 const Wrap = styled.div`
-  height: 250px;
+  height: 280px;
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
     rgb(0 0 0 / 73%) 0px 16px 10px -10px;
@@ -109,7 +121,7 @@ const Wrap = styled.div`
 
   a {
     width: 100%;
-    height: 250px;
+    height: 280px;
   }
 
   img {
