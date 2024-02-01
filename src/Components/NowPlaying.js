@@ -70,7 +70,6 @@ const Container = styled.div`
 const Carousel = styled(Slider)`
   margin-top: 20px;
   height: 280px;
-  /* overflow-y: hidden; */
 
   & > button {
     opacity: 0;
